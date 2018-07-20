@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "ndk.dstock",
+    "sha256_cert_fingerprints":
+    ["97:20:DD:AB:2B:A2:A6:13:F3:D2:BA:57:11:DC:79:2A:47:F3:3B:5D:0C:DB:13:8D:B7:36:DB:E2:2D:09:20:88"]
+  }
+}]

@@ -1,0 +1,105 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+
+// Initialize a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(rootProject.file(keystoreProperties['storeFile']))
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    compileSdkVersion 27
+
+    defaultConfig {
+        applicationId "ndk.dstock"
+        minSdkVersion 14
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+
+        release {
+
+            signingConfig signingConfigs.release
+
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        //The `initWith` property allows you to copy configurations from other build types,then configure just the settings you want to change.
+        staging {
+            initWith release
+            debuggable true
+        }
+    }
+
+    // Specifies flavor dimension.
+    flavorDimensions "relevence"
+
+    productFlavors {
+
+        // When building a variant that uses this flavor, the following configurations override those in the defaultConfig block.
+
+        development {
+            // To avoid using legacy multidex when building from the command line, set minSdkVersion to 21 or higher. When using Android Studio 2.3 or higher, the build automatically avoids legacy multidex when deploying to a device running API level 21 or higher—regardless of what you set as your minSdkVersion.
+            minSdkVersion 21
+
+            // The following configuration limits the usage of mdpi screen-density resources.
+            resConfigs "mdpi"
+        }
+
+        production {
+            // If you've configured the defaultConfig block for the release version of your app, you can leave this block empty and Gradle uses configurations in the defaultConfig block instead. You still need to create this flavor. Otherwise, all variants use the "development" flavor configurations.
+        }
+    }
+
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        // To check for a certain build type, use variant.buildType.name == "<buildType>"
+        if (variant.buildType.name=="release" && names.contains("development")) {
+            // Gradle ignores any variants that satisfy the conditions above.
+            setIgnore(true)
+        }
+        if (variant.buildType.name=="debug" && names.contains("production")) {
+            // Gradle ignores any variants that satisfy the conditions above.
+            setIgnore(true)
+        }
+        if (variant.buildType.name=="staging" && names.contains("development")) {
+            // Gradle ignores any variants that satisfy the conditions above.
+            setIgnore(true)
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:support-media-compat:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.google.firebase:firebase-appindexing:16.0.1'
+    implementation 'com.google.firebase:firebase-messaging:17.1.0'
+    //TODO : implement Firbase App Indexing : personal indexing - index recently viewed products, log user actions, test app indexing - public, private, user action logging & auto completion.
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
