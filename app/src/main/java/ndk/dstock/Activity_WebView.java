@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import ndk.utils.Custom_WebViewClient;
 import ndk.utils.Log_Utils;
 
 public class Activity_WebView extends AppCompatActivity {
@@ -41,7 +42,7 @@ public class Activity_WebView extends AppCompatActivity {
         String desktop_mozilla= "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.4) Gecko/20100101 Firefox/4.0";
         settings.setUserAgentString(desktop_mozilla);
 
-        Custom_WebViewClient webViewClient = new Custom_WebViewClient(this, progressBar);
+        Custom_WebViewClient webViewClient = new Custom_WebViewClient(this, progressBar, "dstock.in");
         webView.setWebViewClient(webViewClient);
         webView.setOverScrollMode(View.OVER_SCROLL_NEVER);
         webView.loadUrl("https://dstock.in");

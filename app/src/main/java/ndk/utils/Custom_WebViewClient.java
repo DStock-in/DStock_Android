@@ -1,4 +1,4 @@
-package ndk.dstock;
+package ndk.utils;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,15 +17,17 @@ public class Custom_WebViewClient extends WebViewClient {
     private Activity activity;
     private ProgressBar progressBar;
     private String ShowOrHideWebViewInitialUse = "show";
+    private String application_url;
 
-    Custom_WebViewClient(Activity activity, ProgressBar progressBar) {
+    public Custom_WebViewClient(Activity activity, ProgressBar progressBar, String application_url) {
         this.activity = activity;
         this.progressBar = progressBar;
+        this.application_url = application_url;
     }
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView webView, String url) {
-        if (url.contains("dstock.in")) return false;
+        if (url.contains(application_url)) return false;
 
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         activity.startActivity(intent);

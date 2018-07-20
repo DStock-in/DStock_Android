@@ -69,6 +69,12 @@ android {
         production {
             // If you've configured the defaultConfig block for the release version of your app, you can leave this block empty and Gradle uses configurations in the defaultConfig block instead. You still need to create this flavor. Otherwise, all variants use the "development" flavor configurations.
         }
+
+        development_lower{
+
+            // The following configuration limits the usage of mdpi screen-density resources.
+            resConfigs "mdpi"
+        }
     }
 
     variantFilter { variant ->
@@ -78,11 +84,19 @@ android {
             // Gradle ignores any variants that satisfy the conditions above.
             setIgnore(true)
         }
-        if (variant.buildType.name=="debug" && names.contains("production")) {
+        else if (variant.buildType.name=="release" && names.contains("development_lower")) {
             // Gradle ignores any variants that satisfy the conditions above.
             setIgnore(true)
         }
-        if (variant.buildType.name=="staging" && names.contains("development")) {
+        else if (variant.buildType.name=="debug" && names.contains("production")) {
+            // Gradle ignores any variants that satisfy the conditions above.
+            setIgnore(true)
+        }
+        else if (variant.buildType.name=="staging" && names.contains("development")) {
+            // Gradle ignores any variants that satisfy the conditions above.
+            setIgnore(true)
+        }
+        else if (variant.buildType.name=="staging" && names.contains("development_lower")) {
             // Gradle ignores any variants that satisfy the conditions above.
             setIgnore(true)
         }

@@ -3,6 +3,8 @@ package ndk.dstock;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import ndk.utils.Custom_NotificationManager;
+
 public class Service_FCM extends FirebaseMessagingService {
 
     @Override
@@ -21,6 +23,6 @@ public class Service_FCM extends FirebaseMessagingService {
         String body = remoteMessage.getNotification().getBody();
 
         //then here we can use the title and body to build a notification
-        NotificationManager_Custom.getInstance(this).displayNotification(title,body);
+        Custom_NotificationManager.getInstance(this).displayNotification(title, body);
     }
 }

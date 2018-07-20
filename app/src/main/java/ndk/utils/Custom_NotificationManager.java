@@ -1,4 +1,4 @@
-package ndk.dstock;
+package ndk.utils;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -6,23 +6,27 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
+import ndk.dstock.Activity_WebView;
+import ndk.dstock.Application_Specification;
+import ndk.dstock.R;
+
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 /**
  * Created on 18-07-2018 08:53 under New folder.
  */
-public class NotificationManager_Custom {
+public class Custom_NotificationManager {
 
     private Context mCtx;
-    private static NotificationManager_Custom mInstance;
+    private static Custom_NotificationManager mInstance;
 
-    private NotificationManager_Custom(Context context) {
+    private Custom_NotificationManager(Context context) {
         mCtx = context;
     }
 
-    public static synchronized NotificationManager_Custom getInstance(Context context) {
+    public static synchronized Custom_NotificationManager getInstance(Context context) {
         if (mInstance == null) {
-            mInstance = new NotificationManager_Custom(context);
+            mInstance = new Custom_NotificationManager(context);
         }
         return mInstance;
     }
