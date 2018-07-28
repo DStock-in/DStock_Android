@@ -22,15 +22,16 @@ android {
         }
     }
 
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "ndk.dstock"
-        minSdkVersion 14
-        targetSdkVersion 27
+        minSdkVersion 19
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -70,7 +71,7 @@ android {
             // If you've configured the defaultConfig block for the release version of your app, you can leave this block empty and Gradle uses configurations in the defaultConfig block instead. You still need to create this flavor. Otherwise, all variants use the "development" flavor configurations.
         }
 
-        development_lower{
+        development_lower {
 
             // The following configuration limits the usage of mdpi screen-density resources.
             resConfigs "mdpi"
@@ -80,40 +81,45 @@ android {
     variantFilter { variant ->
         def names = variant.flavors*.name
         // To check for a certain build type, use variant.buildType.name == "<buildType>"
-        if (variant.buildType.name=="release" && names.contains("development")) {
+        if (variant.buildType.name == "release" && names.contains("development")) {
             // Gradle ignores any variants that satisfy the conditions above.
             setIgnore(true)
-        }
-        else if (variant.buildType.name=="release" && names.contains("development_lower")) {
+        } else if (variant.buildType.name == "release" && names.contains("development_lower")) {
             // Gradle ignores any variants that satisfy the conditions above.
             setIgnore(true)
-        }
-        else if (variant.buildType.name=="debug" && names.contains("production")) {
+        } else if (variant.buildType.name == "debug" && names.contains("production")) {
             // Gradle ignores any variants that satisfy the conditions above.
             setIgnore(true)
-        }
-        else if (variant.buildType.name=="staging" && names.contains("development")) {
+        } else if (variant.buildType.name == "staging" && names.contains("development")) {
             // Gradle ignores any variants that satisfy the conditions above.
             setIgnore(true)
-        }
-        else if (variant.buildType.name=="staging" && names.contains("development_lower")) {
+        } else if (variant.buildType.name == "staging" && names.contains("development_lower")) {
             // Gradle ignores any variants that satisfy the conditions above.
             setIgnore(true)
         }
     }
+
+//    testBuildType "release"
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:support-media-compat:27.1.1'
-    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:appcompat-v7:28.0.0-beta01'
+    implementation 'com.android.support:design:28.0.0-beta01'
+    implementation 'com.android.support:support-media-compat:28.0.0-beta01'
+    implementation 'com.android.support:support-v4:28.0.0-beta01'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.google.firebase:firebase-appindexing:16.0.1'
     implementation 'com.google.firebase:firebase-messaging:17.1.0'
     //TODO : implement Firbase App Indexing : personal indexing - index recently viewed products, log user actions, test app indexing - public, private, user action logging & auto completion.
+    implementation 'com.android.support:support-vector-drawable:28.0.0-beta01'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+//    implementation 'com.github.Baneeishaque:Android_Common_Utils:08d1c983c7'
+//    implementation 'com.github.Baneeishaque:Android_Common_Utils:4a796f6df2'
+//    implementation 'com.github.Baneeishaque:Android_Common_Utils:cdbfe0263c'
+//    implementation 'com.github.Baneeishaque:Android_Common_Utils:fda4549d9c'
+//    implementation 'com.github.Baneeishaque:Android_Common_Utils:v3'
+    implementation 'com.github.Baneeishaque:Android_Common_Utils:9c057adeab'
 }
-

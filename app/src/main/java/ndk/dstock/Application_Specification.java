@@ -5,6 +5,5 @@ package ndk.dstock;
  */
 public class Application_Specification {
     public static String APPLICATION_NAME="DStock";
-    public static final String CHANNEL_ID = "my_channel_01";
-
+    public static final String CHANNEL_ID = APPLICATION_NAME;
 }

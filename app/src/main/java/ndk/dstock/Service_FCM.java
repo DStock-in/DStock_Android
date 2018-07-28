@@ -23,6 +23,6 @@ public class Service_FCM extends FirebaseMessagingService {
         String body = remoteMessage.getNotification().getBody();
 
         //then here we can use the title and body to build a notification
-        Custom_NotificationManager.getInstance(this).displayNotification(title, body);
+        Custom_NotificationManager.getInstance(this).displayNotification(title, body, R.mipmap.ic_launcher_round, Activity_WebView.class, Application_Specification.CHANNEL_ID);
     }
 }
