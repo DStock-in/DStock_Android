@@ -16,7 +16,7 @@
 
         <!-- TODO : Custom backup agent for onQuotaExceeded notification - no current relevance -->
         <!-- TODO : Add Instant App Support -->
-        <!-- Features : App links, Firbase App indexing, Backup Service, Instant App, Offline Cache, Prefetch of Pages -->
+        <!-- Features : App links, Firebase App indexing, Backup Service, Instant App, Offline Cache, Prefetch of Pages -->
 
         <activity android:name=".Activity_WebView">
             <tools:validation testUrl="https://dstock.in" />
@@ -93,8 +93,8 @@
             android:resource="@xml/noindex" />
 
         <activity
-            android:name=".NovcanikActivity"
-            android:label="NovcanikActivity">
+            android:name=".Novcanik_Activity"
+            android:label="Novcanik_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

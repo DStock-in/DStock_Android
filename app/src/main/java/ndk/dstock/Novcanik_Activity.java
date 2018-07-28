@@ -15,7 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
-public class NovcanikActivity extends Activity {
+public class Novcanik_Activity extends Activity {
     /**
      * Called when the activity is first created.
      */
@@ -37,7 +37,7 @@ public class NovcanikActivity extends Activity {
         webview.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
         webview.setBackgroundColor(128);
 
-        webview.setWebViewClient(new NovcanikWebViewClient());
+        webview.setWebViewClient(new Novcanik_WebViewClient());
 
         webview.setDownloadListener(new DownloadListener() {
             public void onDownloadStart(String url, String userAgent,
@@ -73,7 +73,7 @@ public class NovcanikActivity extends Activity {
 
     }
 
-    public void unvisible() {
+    public void unVisible() {
 
         WebView webview = findViewById(R.id.webView1);
 
@@ -94,7 +94,7 @@ public class NovcanikActivity extends Activity {
     }
 
 
-    private class NovcanikWebViewClient extends WebViewClient {
+    private class Novcanik_WebViewClient extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView webview, String url) {
             webview.loadUrl(url);
@@ -118,7 +118,7 @@ public class NovcanikActivity extends Activity {
         @Override
         public void onPageFinished(WebView view, String url) {
 
-            unvisible();
+            unVisible();
 
         }
 

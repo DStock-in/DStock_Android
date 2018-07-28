@@ -3,7 +3,7 @@ package ndk.dstock;
 /**
  * Created on 18-07-2018 20:37 under DStock.
  */
-public class Application_Specification {
-    public static String APPLICATION_NAME="DStock";
-    public static final String CHANNEL_ID = APPLICATION_NAME;
+class Application_Specification {
+    static String APPLICATION_NAME = "DStock";
+    static final String CHANNEL_ID = APPLICATION_NAME;
 }
