@@ -2,6 +2,4 @@
 <search-engine>
     <!--TODO : Clarify about public indexing of user profiles-->
     <!--TODO : Clarify about public indexing of user data-->
-    <!--<noindex uri="http://recipe-app.com/profile/hidden-page" />-->
-    <!--<noindex uriPrefix="http://recipe-app.com/users/hidden_prefix" />-->
 </search-engine>
